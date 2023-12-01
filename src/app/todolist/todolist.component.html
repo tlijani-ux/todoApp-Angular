@@ -1,0 +1,32 @@
+<div class="container">
+
+    <h1>TodoApp</h1>
+
+    <hr>
+
+    <form (ngSubmit)="onSumbit(taskForm)" #taskForm="ngForm">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Task</label>
+            <input type="text" class="form-control" id="task" placeholder="Enter task" ngModel name="task" required>
+            <small id="error" class="form-text text-danger">required field</small>
+        </div>
+        <button [disabled]="taskForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <hr>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Task</th>
+                <th scope="col">Completed</th>
+                <th scope="col">Deleted</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of Array; index as i">
+                <td> {{x.taskName}}</td>
+                <td> <input id="checkbox" type="checkbox" aria-label="Checkbox for following text input"></td>
+                <td><button class="btn btn-danger btn-sm" (click)="onDelete(i)">Delete</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
